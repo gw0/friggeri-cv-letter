@@ -8,7 +8,8 @@ LaTeX template for CV and cover letter based on templates [friggeri-letter](http
 Usage:
 
 ```bash
-xelatex example-cover-letter; biber example-cover-letter; xelatex example-cover-letter
+apt-get install texlive-xetex texlive-bibtex-extra biber
+xelatex example-cover-letter && biber example-cover-letter && xelatex example-cover-letter
 ```
 
 All resumes should have a cover letter (so I'm told). It would be inconsistent to stick a normal LaTeX letter infront of a friggeri resume. Also, a normal LaTeX letter is not as eye-catching.
@@ -23,7 +24,8 @@ This letter class uses the same eye catching header as the Friggeri CV, and uses
 Usage:
 
 ```bash
-xelatex example-resume; biber example-resume; xelatex example-resume
+apt-get install texlive-xetex texlive-bibtex-extra biber
+xelatex example-resume && biber example-resume && xelatex example-resume
 ```
 
 Matthew modifications:

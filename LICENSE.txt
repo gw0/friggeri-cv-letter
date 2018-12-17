@@ -17,8 +17,11 @@ gw0 [http://gw.tnode.com/] <gw.2018@ena.one>
 Code License:
 CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 
-Font Licence:
+Roboto font licence:
 Apache 2.0 (https://www.google.com/fonts#UsePlace:use/Collection:Roboto)
+
+Source Sans Pro font license:
+Open Font License (https://opensource.org/licenses/OFL-1.1)
 
 Important notes:
 This template needs to be compiled with XeLaTeX

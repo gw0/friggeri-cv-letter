@@ -51,13 +51,23 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
-\newfontfamily\bodyfont[Path=fonts/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
-\newfontfamily\thinfont[Path=fonts/]{Roboto-Thin.ttf}
-\newfontfamily\headingfont[Path=fonts/]{Roboto-Medium.ttf}
-\newfontfamily\positionfont[Path=fonts/]{Roboto-LightItalic.ttf}
+% Roboto font
+% \newfontfamily\headerboldfont[Path=fonts/Roboto/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
+% \newfontfamily\headerthinfont[Path=fonts/Roboto/]{Roboto-Thin.ttf}
+% \newfontfamily\headingfont[Path=fonts/Roboto/]{Roboto-Medium.ttf}
+% \newfontfamily\positionfont[Path=fonts/Roboto/]{Roboto-LightItalic.ttf}
+
+% \defaultfontfeatures{Mapping=tex-text}
+% \setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/Roboto/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
+
+% Source Sans Pro
+\newfontfamily\headerboldfont[Path=fonts/SourceSansPro/]{SourceSansPro-Semibold.ttf}
+\newfontfamily\headerthinfont[Path=fonts/SourceSansPro/]{SourceSansPro-ExtraLight.ttf}
+\newfontfamily\headingfont[Path=fonts/SourceSansPro/]{SourceSansPro-Bold.ttf}
+\newfontfamily\positionfont[Path=fonts/SourceSansPro/]{SourceSansPro-It.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/SourceSansPro/, BoldFont=SourceSansPro-Semibold.ttf, ItalicFont=SourceSansPro-It.ttf, BoldItalicFont=SourceSansPro-SemiboldIt.ttf]{SourceSansPro-Regular.ttf}
 
 %\setmathfont{XITS Math}
 
@@ -79,11 +89,11 @@
     \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
     \node [anchor=center] (name) at (box) {%
       \fontsize{40pt}{72pt}\color{header}%
-      {\thinfont #1}{\bodyfont #2}
+      {\headerthinfont #1}{\headerboldfont #2}
     };
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
-      \thinfont #3%
+      \headerthinfont #3%
     };
   \end{tikzpicture}
   \vspace{2.5cm}
@@ -133,10 +143,8 @@
   \par\vspace{.25\parskip}%
 }
 
-%\renewcommand{\subsubsection}[1]{
 \renewcommand{\subsubsection}[2]{
   \par\vspace{.5\parskip}%
-%  {\Large\headingfont\color{headercolor} #1}
   {\Large\headingfont\color{headercolor} #2}
   \par\vspace{.25\parskip}%
 }
@@ -187,7 +195,7 @@
   \renewcommand{\section}[1]{
     \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
   }
-  \begin{textblock}{3.6}(1.5, 4.33)
+  \begin{textblock}{3.8}(1.1, 4.33)
   \begin{flushright}
   \obeycr
 }{%
@@ -337,7 +345,7 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6.1cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
