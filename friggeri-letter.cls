@@ -1,15 +1,12 @@
+\ProvidesClass{friggeri-letter}[2015/10/31 Cover letter class]
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{my_cv}[2015/10/31 Cover letter for friggeri resume]
-
 
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{letter}%
 }
 \ProcessOptions\relax
-
 \LoadClass{letter}
-
 
 \newcommand*{\header}[3]{
   \def\firstname{#1}
@@ -62,16 +59,15 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
-\newfontfamily\bodyfont[]{Roboto-Regular}
-\newfontfamily\thinfont[]{Roboto-Thin}
-\newfontfamily\headingfont[]{Roboto-Medium}
-\newfontfamily\positionfont[]{Roboto-LightItalic}
+\newfontfamily\bodyfont[Path=fonts/]{Roboto-Regular.ttf}
+\newfontfamily\thinfont[Path=fonts/]{Roboto-Thin.ttf}
+\newfontfamily\headingfont[Path=fonts/]{Roboto-Medium.ttf}
+\newfontfamily\positionfont[Path=fonts/]{Roboto-LightItalic.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor]{Roboto-Light}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/]{Roboto-Light.ttf}
 
 %\setmathfont{XITS Math}
-
 
 
 %%%%%%%%%%

@@ -20,43 +20,37 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[]{friggeri-cv} % Add 'print' as an option into the square bracket to remove colors from this template for printing
+\documentclass[a4paper,english]{friggeri-cv} % Options: 'print' to remove colors for printing, other options from 'article'
  
 
 \begin{document} 
  
-\header{John~}{Smith}{Professional Cool Guy} % Your name and current job title/field 
+\header{john}{smith}{Professional Cool Guy} % Your name and current job title/field 
 
 %----------------------------------------------------------------------------------------
 %	SIDEBAR SECTION 
 %----------------------------------------------------------------------------------------
 
- 
-\aside{
-\subsubsection{contact}
-%don't display the name in the contact details on the first page
-%because it's up the top%That's why there's the if statement
-\ifx \firstPage \undefined
-   \xdef\firstPage{}
-\else
-John Smith \\
-~ \\
-\fi
-123 Fake St \\
-Australia \\
-~  \\
-02 1234 5678 \\
-0412 345 678 \\
-~   \\
-\href{mailto:example@example.com}{example@example.com} \\
+
+\begin{aside} % In the aside, each new line forces a line break
+\section{contact}
+John Smith
+~
+123 Fake St
+Australia
+~ 
+02 1234 5678
+0412 345 678
+~  
+\href{mailto:example@example.com}{example@example.com}
 \href{http://www.smith.com}{http://www.smith.com}
-~ \\
-~ \\
-\subsubsection{languages}
-English \\
-Spanish \\
+~
+~
+\section{languages}
+English
+Spanish
 Pig Latin
-} 
+\end{aside}
 
  
 

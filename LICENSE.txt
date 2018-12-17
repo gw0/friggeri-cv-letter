@@ -11,6 +11,9 @@ Matthew Davis (matthew@mdavis.xyz)
 
 The letter was created by Matthew Davis, based on Adrien Friggeri's code
 
+Modifications by:
+gw0 [http://gw.tnode.com/] <gw.2018@ena.one>
+
 Code License:
 CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 

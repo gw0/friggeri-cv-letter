@@ -1,4 +1,4 @@
-\ProvidesClass{friggeri-cv}[2012/04/30 CV class]
+\ProvidesClass{friggeri-cv}[2012/04/30 CV/resume class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption{print}{\def\@cv@print{}}
@@ -43,6 +43,7 @@
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
+
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
@@ -50,15 +51,16 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
-\newfontfamily\bodyfont[]{Roboto-Regular}
-\newfontfamily\thinfont[]{Roboto-Thin}
-\newfontfamily\headingfont[]{Roboto-Medium}
-\newfontfamily\positionfont[]{Roboto-LightItalic}
+\newfontfamily\bodyfont[Path=fonts/]{Roboto-Regular.ttf}
+\newfontfamily\thinfont[Path=fonts/]{Roboto-Thin.ttf}
+\newfontfamily\headingfont[Path=fonts/]{Roboto-Medium.ttf}
+\newfontfamily\positionfont[Path=fonts/]{Roboto-LightItalic.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor]{Roboto-Light}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/]{Roboto-Light.ttf}
 
 %\setmathfont{XITS Math}
+
 
 %%%%%%%%%%
 % Header %
@@ -77,7 +79,8 @@
     \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
     \node [anchor=center] (name) at (box) {%
       \fontsize{40pt}{72pt}\color{header}%
-      {\thinfont #1 }~{\bodyfont #2}
+      {\thinfont #1}{\bodyfont #2}
+      %{\thinfont #1 }~{\bodyfont #2}
     };
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
@@ -92,10 +95,11 @@
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
+
 \RequirePackage{parskip}
 
 \newcounter{colorCounter}
-\def\@sectioncolor#1{%
+\def\@sectioncolor#1#2#3{%
   {%
     \color{%
       \ifcase\value{colorCounter}%
@@ -106,27 +110,27 @@
         purple\or%
         brown\else%
         headercolor\fi%
-    } #1%
+    } #1#2#3%
   }%
   \stepcounter{colorCounter}%
   %reset the counter once we exhaust all colours
-  \ifthenelse{\equal{\value{colorCounter}}{6}}{
-    \setcounter{colorCounter}{0}
-  }{}
+  \ifthenelse{\equal{\value{colorCounter}}{6}}{%
+    \setcounter{colorCounter}{0}%
+  }{}%
 }
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
   {%
     \LARGE\headingfont\color{headercolor}%
-    \@sectioncolor{ #1}%
+    \@sectioncolor #1%
   }
   \par\vspace{\parskip}
 }
 
 \renewcommand{\subsection}[1]{
   \par\vspace{.5\parskip}%
-  {\Large\headingfont\color{headercolor} \@sectioncolor{ #1}}
+  {\Large\headingfont\color{headercolor} #1}
   \par\vspace{.25\parskip}%
 }
 
@@ -169,31 +173,27 @@
     \vspace{\parsep}
 }\\}
 
+
 %%%%%%%%%%%%%%
 % Side block %
 %%%%%%%%%%%%%%
 
-\RequirePackage{everypage}
-
 \RequirePackage[absolute,overlay]{textpos}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
-
-\xdef\asideHeight{5}
-
-\newcommand\aside[1]{
-    \AddEverypageHook{
-        \begin{textblock}{3.6}(1.5, \asideHeight) % {width}(xpos,ypos)
-            \begin{flushright}
-            \linespread{1}\selectfont
-            #1
-            \end{flushright}
-        \end{textblock}
-        %
-        %all pages aside from the first should have the side bit further up
-        %Crude hack to just redefine the y position as we go
-        \xdef\asideHeight{2.1}
-    }
+\newenvironment{aside}{%
+  \let\oldsection\section
+  \renewcommand{\section}[1]{
+    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+  }
+  \begin{textblock}{3.6}(1.5, 4.33)
+  \begin{flushright}
+  \obeycr
+}{%
+  \restorecr
+  \end{flushright}
+  \end{textblock}
+  \let\section\oldsection
 }
 
 
@@ -306,19 +306,6 @@
   \par\vspace{0.3\baselineskip}
 }
 
-% biblatex name formatting changed with version 3.3.
-% After this change the line "\ifblank{#3}{}{#3\space}#1%" gives an error.
-% see also: http://tex.stackexchange.com/questions/327316/updating-friggeris-cv-making-it-work-with-texlive-2015-and-up-too-many-erro
-
-%\DeclareNameFormat{author}{%
-%  \small\addfontfeature{Color=lightgray}%
-%  \ifblank{#3}{}{#3\space}#1%
-%  \ifthenelse{\value{listcount}<\value{liststop}}
-%    {\addcomma\space}
-%    {}%
-%}
-
-% Fix for biblatex 3.3
 \DeclareNameFormat{author}{%
    \nameparts{#1}
    \small\addfontfeature{Color=lightgray}%
@@ -346,20 +333,18 @@
 }
 
 
-
 %%%%%%%%%%%%%%%%
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-
-\RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=1.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.1cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=false,
     citecolor=false,
     filecolor=false,
-    urlcolor = false}
+    urlcolor=false}
 
 % A fix for \href{}{} colors not working with fontspec
 \makeatletter
