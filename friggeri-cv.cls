@@ -51,13 +51,13 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
-\newfontfamily\bodyfont[Path=fonts/]{Roboto-Regular.ttf}
+\newfontfamily\bodyfont[Path=fonts/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
 \newfontfamily\thinfont[Path=fonts/]{Roboto-Thin.ttf}
 \newfontfamily\headingfont[Path=fonts/]{Roboto-Medium.ttf}
 \newfontfamily\positionfont[Path=fonts/]{Roboto-LightItalic.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/]{Roboto-Light.ttf}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
 
 %\setmathfont{XITS Math}
 
@@ -80,7 +80,6 @@
     \node [anchor=center] (name) at (box) {%
       \fontsize{40pt}{72pt}\color{header}%
       {\thinfont #1}{\bodyfont #2}
-      %{\thinfont #1 }~{\bodyfont #2}
     };
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
@@ -134,9 +133,11 @@
   \par\vspace{.25\parskip}%
 }
 
-\renewcommand{\subsubsection}[1]{
+%\renewcommand{\subsubsection}[1]{
+\renewcommand{\subsubsection}[2]{
   \par\vspace{.5\parskip}%
-  {\Large\headingfont\color{headercolor} #1}
+%  {\Large\headingfont\color{headercolor} #1}
+  {\Large\headingfont\color{headercolor} #2}
   \par\vspace{.25\parskip}%
 }
 
@@ -216,8 +217,8 @@
   \par%
   \newblock%
   {%
-    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-    \usebibmacro{journal+issuetitle}%
+    \footnotesize\addfontfeature{Color=lightgray}%
+    \usebibmacro{journal+issuetitle}\itshape%
     \setunit{\space}%
     \printfield{pages}%
     \newunit%
@@ -236,8 +237,8 @@
   \par%
   \newblock%
   {%
-    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-    \printlist{publisher}%
+    \footnotesize\addfontfeature{Color=lightgray}%
+    \printlist{publisher}\itshape%
     \setunit*{\addcomma\space}%
     \printfield{note}%
     \setunit*{\addcomma\space}%
@@ -258,7 +259,7 @@
   \newblock%
   {%
     \footnotesize\addfontfeature{Color=lightgray}%
-    \printfield{booktitle}%
+    \printfield{booktitle}\itshape%
     \setunit{\addcomma\space}%
     \printfield{year}%
     \setunit{\addcomma\space}%
@@ -275,8 +276,8 @@
   \par%
   \newblock%
   {%
-    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-    \printfield{booktitle}%
+    \footnotesize\addfontfeature{Color=lightgray}%
+    \printfield{booktitle}\itshape%
     \setunit*{\addcomma\space}%
     \printfield{note}%
     \setunit*{\addcomma\space}%
@@ -295,8 +296,8 @@
   \par%
   \newblock%
   {%
-    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-    \printfield{type}%
+    \footnotesize\addfontfeature{Color=lightgray}%
+    \printfield{type}\itshape%
     \setunit{\space}%
     \printfield{number}%
     \setunit{\addcomma\space}%
@@ -307,12 +308,11 @@
 }
 
 \DeclareNameFormat{author}{%
-   \nameparts{#1}
-   \small\addfontfeature{Color=lightgray}%
-   \ifblank{\namepartgiven}{}{\namepartgiven\space}#1%
-   \ifthenelse{\value{listcount}<\value{liststop}}
-     {\addcomma\space}
-     {}%
+  \small\addfontfeature{Color=lightgray}%
+  \nameparts{#1}\ifblank{\namepartgiven}{}{\namepartgiven\space}\namepartfamily%
+  \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}
+    {}%
 }
 
 \defbibheading{bibheading}[\bibname]{%
@@ -322,8 +322,8 @@
 
 \newcommand{\printbibsection}[2]{
   \begin{refsection}
-    \nocite{*}
-    \printbibliography[sorting=chronological, type={#1}, title={#2}, heading=bibheading]
+   \nocite{*}
+   \printbibliography[sorting=chronological, type={#1}, title={#2}, heading=bibheading]
   \end{refsection}
 }
 
