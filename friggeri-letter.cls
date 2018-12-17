@@ -59,13 +59,23 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
-\newfontfamily\bodyfont[Path=fonts/]{Roboto-Regular.ttf}
-\newfontfamily\thinfont[Path=fonts/]{Roboto-Thin.ttf}
-\newfontfamily\headingfont[Path=fonts/]{Roboto-Medium.ttf}
-\newfontfamily\positionfont[Path=fonts/]{Roboto-LightItalic.ttf}
+% Roboto font
+% \newfontfamily\headerboldfont[Path=fonts/Roboto/]{Roboto-Regular.ttf}
+% \newfontfamily\headerthinfont[Path=fonts/Roboto/]{Roboto-Thin.ttf}
+% \newfontfamily\headingfont[Path=fonts/Roboto/]{Roboto-Medium.ttf}
+% \newfontfamily\positionfont[Path=fonts/Roboto/]{Roboto-LightItalic.ttf}
+
+% \defaultfontfeatures{Mapping=tex-text}
+% \setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/Roboto/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
+
+% Source Sans Pro
+\newfontfamily\headerboldfont[Path=fonts/SourceSansPro/]{SourceSansPro-Semibold.ttf}
+\newfontfamily\headerthinfont[Path=fonts/SourceSansPro/]{SourceSansPro-ExtraLight.ttf}
+\newfontfamily\headingfont[Path=fonts/SourceSansPro/]{SourceSansPro-Bold.ttf}
+\newfontfamily\positionfont[Path=fonts/SourceSansPro/]{SourceSansPro-It.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/]{Roboto-Light.ttf}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=fonts/SourceSansPro/, BoldFont=SourceSansPro-Semibold.ttf, ItalicFont=SourceSansPro-It.ttf, BoldItalicFont=SourceSansPro-SemiboldIt.ttf]{SourceSansPro-Regular.ttf}
 
 %\setmathfont{XITS Math}
 
@@ -93,11 +103,11 @@
   \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
   \node [anchor=center] (name) at (box) {%
     \fontsize{40pt}{72pt}\color{header}%
-    {\thinfont \firstname}{\bodyfont \lastname}
+    {\headerthinfont \firstname}{\headerboldfont \lastname}
   };
   \node [anchor=north] at (name.south) {%
     \fontsize{14pt}{24pt}\color{header}%
-    \thinfont \subtitle%
+    \headerthinfont \subtitle%
   };
 \end{tikzpicture}
 %\vspace{2.5cm}

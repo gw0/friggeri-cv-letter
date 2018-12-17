@@ -52,7 +52,7 @@
 \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
 % Roboto font
-% \newfontfamily\headerboldfont[Path=fonts/Roboto/, BoldFont=Roboto-Bold.ttf, ItalicFont=Roboto-Italic.ttf, BoldItalicFont=Roboto-BoldItalic.ttf]{Roboto-Regular.ttf}
+% \newfontfamily\headerboldfont[Path=fonts/Roboto/]{Roboto-Regular.ttf}
 % \newfontfamily\headerthinfont[Path=fonts/Roboto/]{Roboto-Thin.ttf}
 % \newfontfamily\headingfont[Path=fonts/Roboto/]{Roboto-Medium.ttf}
 % \newfontfamily\positionfont[Path=fonts/Roboto/]{Roboto-LightItalic.ttf}
@@ -195,7 +195,7 @@
   \renewcommand{\section}[1]{
     \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
   }
-  \begin{textblock}{3.8}(1.1, 4.33)
+  \begin{textblock}{3.8}(1.2, 4.33)
   \begin{flushright}
   \obeycr
 }{%
@@ -345,7 +345,7 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6cm,top=2cm,right=1.2cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
