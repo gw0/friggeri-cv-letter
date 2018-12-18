@@ -9,14 +9,15 @@ Usage:
 
 ```bash
 apt-get install texlive-xetex texlive-bibtex-extra biber
-xelatex example-cover-letter && biber example-cover-letter && xelatex example-cover-letter
+cd ./examples
+xelatex example-letter && xelatex example-letter
 ```
 
 All resumes should have a cover letter (so I'm told). It would be inconsistent to stick a normal LaTeX letter infront of a friggeri resume. Also, a normal LaTeX letter is not as eye-catching.
 
 This letter class uses the same eye catching header as the Friggeri CV, and uses the Roboto font.
 
-![letter-printscreen][letter-printscreen]
+![Image of example-letter.pdf](./example-letter.jpg)
 
 
 ## The CV/resume
@@ -25,7 +26,8 @@ Usage:
 
 ```bash
 apt-get install texlive-xetex texlive-bibtex-extra biber
-xelatex example-resume && biber example-resume && xelatex example-resume
+cd ./examples
+xelatex example-cv && biber example-cv && xelatex example-cv
 ```
 
 Matthew modifications:
@@ -42,22 +44,18 @@ gw0 modifications:
 * Reverted coloring of the headings to original fraggeri-cv template.
 * Reverted the *aside* section to appear only on first page.
 * Reverted to no spacing between first and last name in header.
+* Adjusted margins for A4.
+* Added font Source Sans Pro.
+* Fix issues with bibliography.
 
-![resume-printscreen][resume-printscreen]
+![Image of example-cv.pdf](./example-cv.jpg)
 
 
 ## Acknowledgements and Copyleft
 
 This code was adapted from the original code written by [Adrien Friggeri](http://www.friggeri.net/) under the [Creative Commons 3.0 licence](http://creativecommons.org/licenses/by-nc-sa/3.0/).
 
-The fonts come from [Google Fonts](https://www.google.com/fonts/specimen/Roboto) and are free under the [Apache 2.0 licence.](http://www.apache.org/licenses/LICENSE-2.0.html)
+Roboto fonts come from [Google Fonts](https://www.google.com/fonts/specimen/Roboto) and are free under the [Apache 2.0 licence](http://www.apache.org/licenses/LICENSE-2.0.html).
 
+Source Sans Pro fonts come from [Google Fonts](https://fonts.google.com/specimen/Source+Sans+Pro) and are free under the [Open Font License 1.1](https://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web).
 
-## To do
-
-* Change spacing so that everything lines up relative to the 1/3 fold mark
-* Add option to only put contact details on the first page
-* Get rid of magic numbers in the templates, so it works with other paper sizes. (Then again, who doesn't use A4?)
-
-[letter-printscreen]: http://i.imgur.com/ky4uiUV.png
-[resume-printscreen]: http://imgur.com/dt1GIBE.png
