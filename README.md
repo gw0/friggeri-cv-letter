@@ -5,12 +5,16 @@ LaTeX template for CV and cover letter based on templates [friggeri-letter](http
 
 ## The cover letter
 
-Usage:
+Usage with Docker:
 
 ```bash
-apt-get install texlive-xetex texlive-bibtex-extra biber
-cd ./examples
-xelatex example-letter && xelatex example-letter
+## Compile with Latexmk (MikTeX)
+$ docker run -it -v ~/.miktex:/miktex/.miktex -v $(pwd):/miktex/work miktex/miktex bash
+$ mpm --update
+$ latexmk example-letter
+
+## Or manually with XeLaTeX and Biber (MikTeX)
+$ xelatex example-letter && xelatex example-letter
 ```
 
 All resumes should have a cover letter (so I'm told). It would be inconsistent to stick a normal LaTeX letter infront of a friggeri resume. Also, a normal LaTeX letter is not as eye-catching.
@@ -22,12 +26,16 @@ This letter class uses the same eye catching header as the Friggeri CV, and uses
 
 ## The CV/resume
 
-Usage:
+Usage with Docker:
 
 ```bash
-apt-get install texlive-xetex texlive-bibtex-extra biber
-cd ./examples
-xelatex example-cv && biber example-cv && xelatex example-cv
+## Compile with Latexmk (MikTeX)
+$ docker run -it -v ~/.miktex:/miktex/.miktex -v $(pwd):/miktex/work miktex/miktex bash
+$ mpm --update
+$ latexmk example-cv
+
+## Or manually with with XeLaTeX and Biber (MikTeX)
+$ xelatex example-cv && biber example-cv && xelatex example-cv
 ```
 
 Matthew modifications:
