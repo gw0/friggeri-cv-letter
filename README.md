@@ -51,6 +51,7 @@ gw0 modifications:
 * Reduced bottom margin for more content per page.
 * Added alternate header layout command.
 * Simplified bibliography and entry-list logic; minor letter-class spacing/font tweaks.
+* Fixed entry spacing so empty entries (no position/description) don't add extra vertical space.
 
 ![Image of example-cv.pdf](./example-cv.jpg)
 

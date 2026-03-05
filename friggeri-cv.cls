@@ -190,8 +190,10 @@
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     {\positionfont{#4}}
     \ifthenelse{\isempty{#4} \OR \isempty{#5}}{}{\\}
+    {#5}%
+    \ifthenelse{\isempty{#4} \AND \isempty{#5}}{}{\vspace{\parsep}}%
     %\ifthenelse{\equal{#5}{}}{}{\\}
-    {#5}\vspace{\parsep}%
+    %{#5}\vspace{\parsep}%
   }\\}
 
 \newcommand{\body}[1]{%
