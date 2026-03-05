@@ -21,11 +21,12 @@
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
 
-\definecolor{green}{HTML}{C2E15F}
-\definecolor{orange}{HTML}{FDA333}
-\definecolor{purple}{HTML}{D3A4F9}
-\definecolor{red}{HTML}{FB4485}
-\definecolor{blue}{HTML}{6CE0F1}
+\definecolor{green}{HTML}{b0d82c}%was {C2E15F}
+\definecolor{orange}{HTML}{fda12f}%was {FDA333}
+\definecolor{purple}{HTML}{a94df3}%was {D3A4F9}
+\definecolor{red}{HTML}{fb3179}%was {FB4485}
+\definecolor{blue}{HTML}{1ccee8}%was {6CE0F1}
+\definecolor{darkblue}{HTML}{3366cc}
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -49,7 +50,8 @@
 %%%%%%%%%
 
 \RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+%\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+\RequirePackage{unicode-math}
 
 % Roboto font
 % \newfontfamily\headerboldfont[Path=fonts/Roboto/]{Roboto-Regular.ttf}
@@ -100,6 +102,22 @@
   \vspace{-2\parskip}
 }
 
+\newcommand{\headerpre}[4]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
+    \node [anchor=center] (name) at (box) {%
+      \fontsize{40pt}{72pt}\color{header}%
+      {\headerboldfont #1}\hspace{0.2em}{\headerthinfont #2}{\headerboldfont #3}
+    };
+    \node [anchor=north] at (name.south) {%
+      \fontsize{14pt}{24pt}\color{header}%
+      \headerthinfont #4%
+    };
+  \end{tikzpicture}
+  \vspace{2.5cm}
+  \vspace{-2\parskip}
+}
+
 
 %%%%%%%%%%%%%
 % Structure %
@@ -129,7 +147,7 @@
 }
 
 \renewcommand{\section}[1]{
-  \par\vspace{\parskip}
+  %\par\vspace{\parskip}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
@@ -156,7 +174,7 @@
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage{ifthen}
+\RequirePackage{xifthen}
 
 \setlength{\tabcolsep}{0pt}
 \newenvironment{entrylist}{%
@@ -171,7 +189,8 @@
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     {\positionfont{#4}}
-    \ifthenelse{\equal{#4}{}}{}{\\}
+    \ifthenelse{\isempty{#4} \OR \isempty{#5}}{}{\\}
+    %\ifthenelse{\equal{#5}{}}{}{\\}
     {#5}\vspace{\parsep}%
   }\\}
 
@@ -331,7 +350,8 @@
 \newcommand{\printbibsection}[2]{
   \begin{refsection}
    \nocite{*}
-   \printbibliography[sorting=chronological, type={#1}, title={#2}, heading=bibheading]
+   \newrefcontext[sorting=chronological]
+   \printbibliography[type={#1}, title={#2}, heading=bibheading]
   \end{refsection}
 }
 
@@ -345,14 +365,14 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6cm,top=2cm,right=1.2cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6cm,top=2cm,right=1.2cm,bottom=1.8cm,nohead,nofoot]{geometry}%was bottom=2.5cm
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=false,
     citecolor=false,
     filecolor=false,
-    urlcolor=false}
+    urlcolor=darkblue}%was urlcolor=false
 
 % A fix for \href{}{} colors not working with fontspec
 \makeatletter

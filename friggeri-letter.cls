@@ -14,6 +14,8 @@
   \def\subtitle{#3}
 }
 
+\longindentation=0pt
+
 
 %%%%%%%%%%
 % Colors %
@@ -57,7 +59,8 @@
 %%%%%%%%%
 
 \RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+%\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+\RequirePackage[math-style=TeX]{unicode-math}
 
 % Roboto font
 % \newfontfamily\headerboldfont[Path=fonts/Roboto/]{Roboto-Regular.ttf}

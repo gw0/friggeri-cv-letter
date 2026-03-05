@@ -47,6 +47,10 @@ gw0 modifications:
 * Adjusted margins for A4.
 * Added font Source Sans Pro.
 * Fix issues with bibliography.
+* Retuned accent colors and added colored hyperlinks.
+* Reduced bottom margin for more content per page.
+* Added alternate header layout command.
+* Simplified bibliography and entry-list logic; minor letter-class spacing/font tweaks.
 
 ![Image of example-cv.pdf](./example-cv.jpg)
 
