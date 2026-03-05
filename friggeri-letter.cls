@@ -114,7 +114,7 @@
   };
 \end{tikzpicture}
 %\vspace{2.5cm}
-\vspace{-2\parskip}
+\vspace{-4\parskip}
   %\def\rectshift{0cm}
   %\vspace{-\rectshift}
   %\begin{tikzpicture}[remember picture,overlay]
@@ -147,3 +147,24 @@
   #1\par\nobreak}
 
 %\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%
+% Other tweaks %
+%%%%%%%%%%%%%%%%
+
+\RequirePackage{xcolor}
+\definecolor{darkblue}{HTML}{3366cc}
+
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=false,
+    citecolor=false,
+    filecolor=false,
+    urlcolor=darkblue}%was urlcolor=false
+
+% A fix for \href{}{} colors not working with fontspec
+\makeatletter
+\def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=#1}}
+\makeatother

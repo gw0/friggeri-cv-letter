@@ -60,6 +60,7 @@ gw0 modifications:
 * Added alternate header layout command.
 * Simplified bibliography and entry-list logic; minor letter-class spacing/font tweaks.
 * Fixed entry spacing so empty entries (no position/description) don't add extra vertical space.
+* Style URL links and tighten header spacing.
 
 ![Image of example-cv.pdf](./example-cv.jpg)
 
